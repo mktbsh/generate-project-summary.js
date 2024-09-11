@@ -17,8 +17,6 @@ export async function generateProjectSummary(
     additional: [".gptignore", ".git", "projsum-gen", fileName],
   };
 
-  console.log(patterns);
-
   let summary = `# ${projectName}\n\n## Directory Structure\n\n`;
   let fileContentsSection = "\n## File Contents\n\n";
 
@@ -44,7 +42,6 @@ export async function generateProjectSummary(
 
       if (item.isDirectory()) {
         const ignored = isIgnoredEntry(itemPath);
-        console.log(itemPath, ignored);
         if (ignored) continue;
 
         await traverseDirectory(itemPath, level + 1);
